@@ -24,13 +24,13 @@ const currentDue = { month: 'August 2025', amount: 1200, status: 'Due' };
 
 function App() {
   return (
-    <div className="tenant-dashboard" style={{ maxWidth: 400, margin: '0 auto', padding: 0, background: '#f7f8fa', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+  <div className="tenant-dashboard" style={{ maxWidth: 400, margin: '0 auto', padding: 0, background: '#f7f8fa', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: '#222' }}>
       <div style={{ padding: '24px 16px 80px 16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
           <img src={reactLogo} alt="Logo" style={{ width: 40, marginRight: 8 }} />
           <h2 style={{ textAlign: 'center', fontWeight: 700, fontSize: 24, margin: 0 }}>Maintenance Summary</h2>
         </div>
-        <div style={{ marginBottom: 24, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 16 }}>
+  <div style={{ marginBottom: 24, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 16, color: '#222' }}>
           <h3 style={{ display: 'flex', alignItems: 'center', fontSize: 18, margin: 0, marginBottom: 12 }}>
             <PaymentIcon />
             <span style={{ marginLeft: 8 }}>Past Payments</span>
@@ -45,7 +45,7 @@ function App() {
             ))}
           </ul>
         </div>
-        <div style={{ marginBottom: 24, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 16 }}>
+  <div style={{ marginBottom: 24, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 16, color: '#222' }}>
           <h3 style={{ fontSize: 18, margin: 0, marginBottom: 12 }}>Current Due</h3>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#ffeaea', padding: 12, borderRadius: 8, fontSize: 16 }}>
             <span>{currentDue.month}</span>
