@@ -1,18 +1,14 @@
 
 
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import { Box, Card, CardContent, Typography, Button, BottomNavigation, BottomNavigationAction, Avatar, Container } from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PaymentIcon from '@mui/icons-material/Payment';
 
-const ProfileIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-);
-const SettingsIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-);
-const PaymentIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-);
 
 const mockPayments = [
   { month: 'June 2025', amount: 1200, status: 'Paid' },
@@ -22,54 +18,59 @@ const currentDue = { month: 'August 2025', amount: 1200, status: 'Due' };
 
 
 
+
 function App() {
+  const [navValue, setNavValue] = React.useState(0);
   return (
-  <div className="tenant-dashboard" style={{ maxWidth: 400, margin: '0 auto', padding: 0, background: '#f7f8fa', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: '#222' }}>
-      <div style={{ padding: '24px 16px 80px 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
-          <img src={reactLogo} alt="Logo" style={{ width: 40, marginRight: 8 }} />
-          <h2 style={{ textAlign: 'center', fontWeight: 700, fontSize: 24, margin: 0 }}>Maintenance Summary</h2>
-        </div>
-  <div style={{ marginBottom: 24, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 16, color: '#222' }}>
-          <h3 style={{ display: 'flex', alignItems: 'center', fontSize: 18, margin: 0, marginBottom: 12 }}>
-            <PaymentIcon />
-            <span style={{ marginLeft: 8 }}>Past Payments</span>
-          </h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {mockPayments.map((p, idx) => (
-              <li key={idx} style={{ display: 'grid', gridTemplateColumns: '1fr 80px 1fr', alignItems: 'center', marginBottom: 10, fontSize: 16 }}>
-                <span style={{ textAlign: 'left' }}>{p.month}</span>
-                <span style={{ color: 'green', fontWeight: 500, textAlign: 'center' }}>{p.status}</span>
-                <span style={{ fontWeight: 600, textAlign: 'right' }}>₹{p.amount}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-  <div style={{ marginBottom: 24, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 16, color: '#222' }}>
-          <h3 style={{ fontSize: 18, margin: 0, marginBottom: 12 }}>Current Due</h3>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#ffeaea', padding: 12, borderRadius: 8, fontSize: 16 }}>
-            <span>{currentDue.month}</span>
-            <span style={{ color: 'red', fontWeight: 500 }}>{currentDue.status}</span>
-            <span style={{ fontWeight: 600 }}>₹{currentDue.amount}</span>
-          </div>
-        </div>
-        <div style={{ textAlign: 'center', marginTop: 16 }}>
-          <a href="#" style={{ background: '#007bff', color: '#fff', padding: '14px 32px', borderRadius: 10, textDecoration: 'none', fontWeight: 'bold', fontSize: 18, boxShadow: '0 2px 8px #007bff33', display: 'inline-block' }}>
+    <Container maxWidth="sm" disableGutters sx={{ bgcolor: '#f7f8fa', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', px: 0 }}>
+      <Box sx={{ pt: 3, pb: 10 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2 }}>
+          <Avatar src={reactLogo} sx={{ width: 48, height: 48, mr: 1 }} />
+          <Typography variant="h5" fontWeight={700}>Maintenance Summary</Typography>
+        </Box>
+        <Card sx={{ mb: 3, borderRadius: 3, boxShadow: 2 }}>
+          <CardContent>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <PaymentIcon color="primary" />
+              <Typography variant="h6" sx={{ ml: 1 }}>Past Payments</Typography>
+            </Box>
+            <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+              {mockPayments.map((p, idx) => (
+                <Box component="li" key={idx} sx={{ display: 'grid', gridTemplateColumns: '1fr 80px 1fr', alignItems: 'center', mb: 1, fontSize: 16 }}>
+                  <Typography sx={{ textAlign: 'left' }}>{p.month}</Typography>
+                  <Typography sx={{ color: 'green', fontWeight: 500, textAlign: 'center' }}>{p.status}</Typography>
+                  <Typography sx={{ fontWeight: 600, textAlign: 'right' }}>₹{p.amount}</Typography>
+                </Box>
+              ))}
+            </Box>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 3, borderRadius: 3, boxShadow: 2 }}>
+          <CardContent>
+            <Typography variant="h6" sx={{ mb: 2 }}>Current Due</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: '#ffeaea', p: 1.5, borderRadius: 2, fontSize: 16 }}>
+              <Typography>{currentDue.month}</Typography>
+              <Typography sx={{ color: 'red', fontWeight: 500 }}>{currentDue.status}</Typography>
+              <Typography sx={{ fontWeight: 600 }}>₹{currentDue.amount}</Typography>
+            </Box>
+          </CardContent>
+        </Card>
+        <Box sx={{ textAlign: 'center', mt: 2 }}>
+          <Button variant="contained" color="primary" size="large" sx={{ borderRadius: 2, fontWeight: 'bold', fontSize: 18, boxShadow: 2 }}>
             Make Payment
-          </a>
-        </div>
-      </div>
-      <nav style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', background: '#fff', borderTop: '1px solid #eee', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: 64, boxShadow: '0 -2px 8px #0001' }}>
-        <button style={{ background: 'none', border: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#007bff', fontWeight: 500, fontSize: 14 }}>
-          <ProfileIcon />
-          Profile
-        </button>
-        <button style={{ background: 'none', border: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#007bff', fontWeight: 500, fontSize: 14 }}>
-          <SettingsIcon />
-          Settings
-        </button>
-      </nav>
-    </div>
+          </Button>
+        </Box>
+      </Box>
+      <BottomNavigation
+        value={navValue}
+        onChange={(event, newValue) => setNavValue(newValue)}
+        showLabels
+        sx={{ position: 'fixed', left: 0, bottom: 0, width: '100%', borderTop: '1px solid #eee', boxShadow: 2 }}
+      >
+        <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} />
+        <BottomNavigationAction label="Settings" icon={<SettingsIcon />} />
+      </BottomNavigation>
+    </Container>
   );
 }
 
