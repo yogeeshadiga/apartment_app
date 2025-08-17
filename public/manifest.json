@@ -1,0 +1,16 @@
+{
+  "short_name": "ApartmentApp",
+  "name": "Apartment Management App",
+  "icons": [
+    {
+      "src": "vite.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f7f8fa",
+  "theme_color": "#007bff",
+  "description": "Manage apartment maintenance and payments."
+}
